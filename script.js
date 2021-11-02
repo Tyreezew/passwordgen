@@ -8,7 +8,7 @@ var specialCharacters = [
     '!',
     '&',
     '*',
-    '&',
+    '/',
     '*',
     '(',
     ')',
@@ -24,7 +24,6 @@ var specialCharacters = [
     ';',
     '~',
     ':'
-  
   ];
   
   var numericCharacters = [
@@ -91,8 +90,8 @@ var specialCharacters = [
   
   function getPasswordOptions() {
   
-  var length = pasreInt (
-    prompt ('How many characters would you like your password to contain?')
+  var length = parseInt(
+    prompt('How many characters would you like your password to contain?')
   );
   
   if (Number.isNaN(length)) {
@@ -157,13 +156,16 @@ var specialCharacters = [
   }
   
   function generatePassword() {
-  
+    var options = getPasswordOptions();
+
     var result = [];
   
     var possibleCharacters = [];
   
     var guaranteedCharacters = [];
-  
+
+    if (!options) return null;
+
     if (options.hasSpecialCharacters) {
         possibleCharacters = possibleCharacters.concat(specialCharacters);
         guaranteedCharacters.push(getRandom(specialCharacters));
@@ -198,17 +200,15 @@ var specialCharacters = [
   
   
   // Assignment Code
-  var generateBtn = document.querySelector("#generate");
-  
-  // Write password to the #password input
-  function writePassword() {
-    var password = generatePassword();
-    var passwordText = document.querySelector("#password");
-  
-    passwordText.value = password;
-  
-  }
-  
-  // Add event listener to generate button
-  generateBtn.addEventListener("click", writePassword);
-  
+var generateBtn = document.querySelector('#generate');
+
+// Write password to the #password input
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector('#password');
+
+  passwordText.value = password;
+}
+
+// Add event listener to generate button
+generateBtn.addEventListener('click', writePassword);
