@@ -12,7 +12,7 @@ When user wants to generate a secure password, they will be prompted to choose a
 * Javascript
 
 ## Website
-
+https://tyreezew.github.io/passwordgen/
 
 
 ## Contribution
